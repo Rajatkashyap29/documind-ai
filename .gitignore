@@ -1,5 +1,15 @@
+# Virtual Environment
 .venv/
+
+# Environment Variables
 .env
+
+# Python
 __pycache__/
 *.pyc
+
+# Uploaded Files
 uploads/
+
+# ChromaDB
+chroma_db/

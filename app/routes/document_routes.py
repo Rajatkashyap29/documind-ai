@@ -5,7 +5,7 @@ from sqlalchemy.orm import Session
 from  ..schemas.document_schemas import DocumentResponse
 from ..models.user_model import User
 
-from ..services.document_services import FileUpload,ViewAllDocumnets
+from ..services.document_services import FileUpload,ViewAllDocumnets,RemoveDocs
 
 
 
@@ -24,3 +24,7 @@ def upload_file(
 @router.get('/documents')
 def seedocuments(user:User = Depends(get_current_user),database:Session = Depends(get_db)):
     return ViewAllDocumnets(user,database)
+
+@router.delete('/document/{id}')
+def DeleteDocs(id:int,user:User = Depends(get_current_user),database:Session = Depends(get_db)):
+    return RemoveDocs(id,user,database)

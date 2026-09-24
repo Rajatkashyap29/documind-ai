@@ -67,3 +67,31 @@ def ViewAllDocumnets(user:User = Depends(get_current_user),database:Session = De
     document = database.query(Document).filter(Document.user_id == user.id).all()
     
     return document 
+
+def RemoveDocs(id:int,user:User = Depends(get_current_user),database:Session = Depends(get_db)):
+    document = database.query(Document).filter(Document.id == id).first()
+    
+    if not document:
+        raise HTTPException(
+            detail="Document Not Found",
+            status_code=404
+        )
+    
+    if document.user_id != user.id  :
+        raise HTTPException(
+            status_code=401,
+            detail= " You are Not AUthorized To delete this Document"
+        )
+    
+    file_path = Path(document.file_path)
+
+    if file_path.exists():
+        file_path.unlink()    
+    
+    database.delete(document)
+    database.commit()      
+    
+    
+    return {
+        "message": "Document Deleted Successfully"
+    }
