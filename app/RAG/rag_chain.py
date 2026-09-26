@@ -20,21 +20,24 @@ prompt = ChatPromptTemplate.from_template(
     """
 )
 
-def ask_question(question:str):
-    documents = retrieve_documents(question)
-    
-    context = "\n\n".join(
-    document.page_content
-    for document in documents
+def ask_question(question: str, document_id: int):
+    documents = retrieve_documents(
+        question,
+        document_id
     )
-    
+
+    context = "\n\n".join(
+        document.page_content
+        for document in documents
+    )
+
     messages = prompt.format_messages(
         context=context,
         question=question
     )
-    
+
     response = llm.invoke(messages)
-    
+
     return {
         "answer": response.content,
         "sources": [

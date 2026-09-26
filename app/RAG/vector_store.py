@@ -7,7 +7,10 @@ embedding_model = HuggingFaceEmbeddings(
 )
 
 
-def create_vector_store(chunks):
+def create_vector_store(chunks, document_id):
+    for chunk in chunks:
+        chunk.metadata["document_id"] = document_id
+
     vector_store = Chroma.from_documents(
         documents=chunks,
         embedding=embedding_model,

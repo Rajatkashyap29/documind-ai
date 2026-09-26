@@ -8,6 +8,9 @@ from jose import jwt,JWTError
 
 from app.auth.dependencies import get_current_user
 from app.models.document_model import Document
+from app.RAG.pdf_loader import load_pdf
+from app.RAG.chunker import text_splitter
+from app.RAG.vector_store import create_vector_store
 
 from ..core.database import get_db
 from ..core.settings import settings
@@ -60,6 +63,11 @@ def FileUpload(
     database.add(document)
     database.commit()
     database.refresh(document)
+    
+    documents = load_pdf(str(file_path))
+    chunks = text_splitter(documents)
+    create_vector_store(chunks, document.id)
+
 
     return document
 

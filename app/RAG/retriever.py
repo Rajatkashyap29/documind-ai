@@ -17,12 +17,17 @@ def get_vector_store():
     return vector_store
 
 
-def retrieve_documents(query: str, k: int = 3):
+def retrieve_documents(
+    query: str,
+    document_id: int,
+    k: int = 3
+):
     vector_store = get_vector_store()
 
     documents = vector_store.similarity_search(
         query,
-        k=k
+        k=k,
+        filter={"document_id": document_id}
     )
 
     return documents
