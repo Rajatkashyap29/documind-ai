@@ -1,6 +1,7 @@
 from langchain_core.prompts import ChatPromptTemplate
 from .retriever import retrieve_documents
 from .llm import llm
+from .hyde import generate_hypothetical_answer
 from .query_enhancer import enhance_query
 from .query_expander import expand_query
 
@@ -25,8 +26,15 @@ prompt = ChatPromptTemplate.from_template(
 
 def ask_question(question: str, document_id: int):
     enhanced_query = enhance_query(question)
+
     expanded_queries = expand_query(enhanced_query)
-    
+
+    hypothetical_answer = generate_hypothetical_answer(
+        enhanced_query
+    )
+
+    expanded_queries.append(hypothetical_answer)
+
     documents = retrieve_documents(
         expanded_queries,
         document_id
