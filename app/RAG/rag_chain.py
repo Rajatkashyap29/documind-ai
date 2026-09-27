@@ -1,6 +1,8 @@
 from langchain_core.prompts import ChatPromptTemplate
 from .retriever import retrieve_documents
 from .llm import llm
+from .query_enhancer import enhance_query
+
 
 
 prompt = ChatPromptTemplate.from_template(
@@ -21,8 +23,10 @@ prompt = ChatPromptTemplate.from_template(
 )
 
 def ask_question(question: str, document_id: int):
+    enhanced_query = enhance_query(question)
+    
     documents = retrieve_documents(
-        question,
+        enhanced_query,
         document_id
     )
 
