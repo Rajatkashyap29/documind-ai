@@ -3,6 +3,7 @@ from fastapi import FastAPI
 
 from app.models.user_model import User
 from app.models.document_model import Document
+from app.models.chat_history_model import ChatHistory
 from .core.database import Base,engine
 from .routes import user_routes,document_routes
 from .routes import chat_routes
