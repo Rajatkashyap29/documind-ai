@@ -1,0 +1,322 @@
+/* Documents & Upload Styles */
+
+.docs-page-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.docs-header-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.docs-summary-metrics {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.metric-chip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  padding: 8px 16px;
+  border-radius: var(--radius-full);
+  font-size: 0.88rem;
+  color: var(--text-muted);
+}
+
+.metric-chip strong {
+  color: var(--text-main);
+  font-size: 1rem;
+}
+
+/* Upload Dropzone */
+.upload-dropzone {
+  position: relative;
+  background: rgba(18, 24, 38, 0.6);
+  border: 2px dashed var(--border-medium);
+  border-radius: var(--radius-xl);
+  padding: 36px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+}
+
+.upload-dropzone:hover,
+.upload-dropzone.drag-active {
+  background: rgba(99, 102, 241, 0.05);
+  border-color: var(--primary-500);
+  box-shadow: 0 0 25px rgba(99, 102, 241, 0.15);
+}
+
+.upload-dropzone.drag-active {
+  transform: scale(1.01);
+}
+
+.upload-icon-wrapper {
+  width: 64px;
+  height: 64px;
+  border-radius: var(--radius-xl);
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.15) 0%, rgba(139, 92, 246, 0.15) 100%);
+  border: 1px solid rgba(99, 102, 241, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary-400);
+  margin-bottom: 16px;
+  transition: transform 0.2s ease;
+}
+
+.upload-dropzone:hover .upload-icon-wrapper {
+  transform: translateY(-2px);
+  color: #FFFFFF;
+  background: var(--primary-gradient);
+}
+
+.upload-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 6px;
+}
+
+.upload-subtitle {
+  font-size: 0.86rem;
+  color: var(--text-muted);
+  max-width: 440px;
+  margin-bottom: 18px;
+}
+
+.upload-file-types {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.78rem;
+  color: var(--text-dim);
+  font-family: var(--font-mono);
+}
+
+/* File Selected Preview inside Dropzone */
+.file-selected-box {
+  width: 100%;
+  max-width: 500px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-lg);
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  cursor: default;
+}
+
+.file-preview-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.file-info-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.pdf-icon-badge {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: rgba(244, 63, 94, 0.15);
+  border: 1px solid rgba(244, 63, 94, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FB7185;
+  flex-shrink: 0;
+}
+
+.file-meta-text {
+  min-width: 0;
+  text-align: left;
+}
+
+.file-name-label {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--text-main);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.file-size-label {
+  font-size: 0.78rem;
+  color: var(--text-dim);
+}
+
+.upload-progress-container {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.upload-progress-bar {
+  width: 100%;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.upload-progress-fill {
+  height: 100%;
+  background: var(--primary-gradient);
+  transition: width 0.2s ease;
+}
+
+.progress-text-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+/* Document Grid & Cards */
+.documents-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 20px;
+}
+
+.doc-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xl);
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 20px;
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.doc-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: transparent;
+  transition: background 0.2s ease;
+}
+
+.doc-card:hover {
+  background: var(--bg-card-hover);
+  border-color: rgba(99, 102, 241, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px -4px rgba(0, 0, 0, 0.4);
+}
+
+.doc-card:hover::before {
+  background: var(--primary-gradient);
+}
+
+.doc-card-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.doc-card-icon-title {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  min-width: 0;
+}
+
+.doc-icon-large {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-md);
+  background: rgba(244, 63, 94, 0.12);
+  border: 1px solid rgba(244, 63, 94, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FB7185;
+  flex-shrink: 0;
+}
+
+.doc-title-area {
+  min-width: 0;
+}
+
+.doc-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-main);
+  line-height: 1.35;
+  word-break: break-word;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.doc-meta-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 6px;
+  font-size: 0.78rem;
+  color: var(--text-dim);
+}
+
+.doc-meta-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.doc-card-status-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 14px;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.doc-actions-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+@media (max-width: 768px) {
+  .documents-grid {
+    grid-template-columns: 1fr;
+  }
+  .docs-header-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}

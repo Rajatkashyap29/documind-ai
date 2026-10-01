@@ -3,6 +3,8 @@
 
 # Environment Variables
 .env
+.env.*
+!.env.example
 
 # Python
 __pycache__/
@@ -13,3 +15,10 @@ uploads/
 
 # ChromaDB
 chroma_db/
+
+# Frontend
+frontend/node_modules/
+frontend/dist/
+frontend/.env
+frontend/.env.*
+!frontend/.env.example
