@@ -73,7 +73,7 @@ export default function Navbar({
           title={isHealthy ? 'FastAPI Backend Online' : 'FastAPI Backend Offline'}
         >
           <span className={`pulse-dot ${isHealthy ? 'dot-success' : 'dot-danger'}`} />
-          <span>{isHealthy ? 'FastAPI Online' : 'Backend Disconnected'}</span>
+          <span>{isHealthy ? ' Intelligence Engine Active ' : 'Backend Disconnected'}</span>
         </div>
 
         {user && (
